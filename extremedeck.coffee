@@ -48,6 +48,9 @@ export const extremeDeck = [
   { type: 'verite', text: `As-tu déjà essayé un fétiche particulier ?`, modes: ['extreme'], level: 3 },
   { type: 'verite', text: `Ton endroit le plus fou où tu aimerais essayer ?`, modes: ['extreme'], level: 3 },
   { type: 'verite', text: `As-tu déjà simulé par plaisir ?`, modes: ['extreme'], level: 3 },
+  { type: 'verite', text: `As-tu déjà partagé une photo osée sans y penser ?`, modes: ['extreme'], level: 3 },
+  { type: 'verite', text: `Quel est le lieu le plus risqué où tu aimerais tenter une expérience ?`, modes: ['extreme'], level: 3 },
+  { type: 'verite', text: `As-tu déjà été tenté(e) par un(e) ami(e) proche ?`, modes: ['extreme'], level: 3 },
 
   // 💀 ACTIONS (50)
   { type: 'action', text: `Reproduisez une position du Kamasutra (90s).`, duration: 90, modes: ['extreme'], level: 3 },
@@ -84,4 +87,20 @@ export const extremeDeck = [
   { type: 'action', text: `Fais un massage sensuel du dos (60s).`, duration: 60, modes: ['extreme'], level: 3 },
   { type: 'action', text: `Écris un mot coquin sur sa peau avec ton doigt.`, modes: ['extreme'], level: 3 },
   { type: 'action', text: `Fais semblant de chevaucher ton/ta partenaire (30s).`, duration: 30, modes: ['extreme'], level: 3 },
-  { type: 'action', text: `Mime une position acrobatique.`, modes: ['extreme'],
+  { type: 'action', text: `Mime une position acrobatique.`, duration: 20, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Fais-lui un bisou passionné en fermant les yeux (20s).`, duration: 20, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Utilise de la glace sur sa peau (30s).`, duration: 30, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Décris en détail un fantasme extrême.`, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Masse sensuellement ses jambes (45s).`, duration: 45, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Laisse-le/la mordiller doucement ton cou (15s).`, duration: 15, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Fais un strip-tease en utilisant un vêtement (30s).`, duration: 30, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Chuchote-lui trois mots très coquins.`, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Guide sa main où tu veux qu'elle te touche (20s).`, duration: 20, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Fais semblant de menotter ton/ta partenaire.`, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Laisse-le/la sentir ton souffle sur sa peau (15s).`, duration: 15, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Décris un scénario sexy à voix haute.`, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Danse lentement sur ses genoux (40s).`, duration: 40, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Laisse-le/la diriger tes mouvements pendant 30s.`, duration: 30, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Fais glisser un cube de glace sur ses lèvres (10s).`, duration: 10, modes: ['extreme'], level: 3 },
+  { type: 'action', text: `Écris avec ta langue sur sa peau pendant 20s.`, duration: 20, modes: ['extreme'], level: 3 }
+];

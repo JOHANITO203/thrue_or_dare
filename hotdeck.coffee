@@ -50,6 +50,7 @@ export const hotDeck = [
   { type: 'verite', text: `As-tu déjà couché avec un(e) collègue ?`, modes: ['hot'], level: 2 },
   { type: 'verite', text: `Ton lieu le plus excitant où tu aimerais essayer ?`, modes: ['hot'], level: 2 },
   { type: 'verite', text: `As-tu déjà couché sans prévenir personne ?`, modes: ['hot'], level: 2 },
+  { type: 'verite', text: `Quel accessoire sexy aimerais-tu tester ?`, modes: ['hot'], level: 2 },
 
   // 🔥 ACTIONS (50)
   { type: 'action', text: `Embrasse-le/la sur la bouche (20s).`, duration: 20, modes: ['hot'], level: 2 },
@@ -98,5 +99,8 @@ export const hotDeck = [
   { type: 'action', text: `Répète une phrase sexy de ton choix.`, modes: ['hot'], level: 2 },
   { type: 'action', text: `Montre ton plus beau sourire séducteur.`, modes: ['hot'], level: 2 },
   { type: 'action', text: `Fais semblant d’embrasser quelqu’un à distance.`, modes: ['hot'], level: 2 },
-  { type: 'action', text: `Place-toi près de son oreille et souffle doucement.`, duration: 10, modes: ['hot'], level: 2 }
+  { type: 'action', text: `Place-toi près de son oreille et souffle doucement.`, duration: 10, modes: ['hot'], level: 2 },
+  { type: 'action', text: `Fais glisser ta main le long de son bras doucement (15s).`, duration: 15, modes: ['hot'], level: 2 },
+  { type: 'action', text: `Décris-lui un fantasme en détail.`, modes: ['hot'], level: 2 },
+  { type: 'action', text: `Échangez un regard intense sans parler (20s).`, duration: 20, modes: ['hot'], level: 2 }
 ];

@@ -50,6 +50,7 @@ export const softDeck = [
   { type: 'verite', text: `Préféres-tu les mots ou les gestes pour prouver l’amour ?`, modes: ['soft'], level: 1 },
   { type: 'verite', text: `Si tu devais écrire une chanson d’amour, quel serait le titre ?`, modes: ['soft'], level: 1 },
   { type: 'verite', text: `Quelle est la chose la plus romantique que tu ferais pour ton/ta partenaire ?`, modes: ['soft'], level: 1 },
+  { type: 'verite', text: `Quel parfum te fait craquer instantanément chez ton/ta partenaire ?`, modes: ['soft'], level: 1 },
 
   // 🟢 ACTIONS (50)
   { type: 'action', text: `Embrasse ton/ta partenaire dans le cou pendant 15s.`, duration: 15, modes: ['soft'], level: 1 },
@@ -96,4 +97,10 @@ export const softDeck = [
   { type: 'action', text: `Regarde ton/ta partenaire comme dans un film romantique (10s).`, duration: 10, modes: ['soft'], level: 1 },
   { type: 'action', text: `Offre un sourire complice au joueur de ton choix.`, modes: ['soft'], level: 1 },
   { type: 'action', text: `Fais semblant de tomber amoureux/amoureuse.`, modes: ['soft'], level: 1 },
-  { type: 'action', text: `Décris ton voisin avec un mot tendre.`, modes:
+  { type: 'action', text: `Décris ton voisin avec un mot tendre.`, modes: ['soft'], level: 1 },
+  { type: 'action', text: `Fais un câlin doux au joueur de ton choix (15s).`, duration: 15, modes: ['soft'], level: 1 },
+  { type: 'action', text: `Chuchote un compliment à ton/ta partenaire.`, duration: 10, modes: ['soft'], level: 1 },
+  { type: 'action', text: `Offre un bisou sur la main de ton voisin de gauche.`, duration: 10, modes: ['soft'], level: 1 },
+  { type: 'action', text: `Partage un souvenir romantique avec le groupe.`, modes: ['soft'], level: 1 },
+  { type: 'action', text: `Regarde ton/ta partenaire dans les yeux et dis “je t’apprécie” (10s).`, duration: 10, modes: ['soft'], level: 1 }
+];
