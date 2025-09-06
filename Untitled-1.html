@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Truth or Dare – Mockup</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .glass {
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255,255,255,0.15);
+  }
+  .glass-soft {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+  }
+  @keyframes btnPulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  @keyframes btnShake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+  @keyframes particleAnim {
+    from { opacity:1; transform: translate(0,0) scale(1); }
+    to { opacity:0; transform: translate(var(--dx), var(--dy)) scale(0); }
+  }
+  @keyframes avatarPulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  .particle {
+    position: fixed;
+    width:8px; height:8px;
+    border-radius:50%;
+    pointer-events:none;
+    animation: particleAnim 1s forwards;
+  }
+  .player-card.active img { animation: avatarPulse 1.5s infinite; }
+  .player-card.active .points { text-shadow:0 0 10px #fff; }
+  .card-wrapper { perspective:1000px; }
+  .card { transform-style:preserve-3d; transition: transform 0.7s; }
+  .card.flipped { transform: rotateY(180deg); }
+  .card-face { position:absolute; width:100%; height:100%; top:0; left:0; backface-visibility:hidden; }
+  .card-face.back { transform: rotateY(180deg); }
+</style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#7a60ff] via-[#ff6ac0] to-[#ff9575] p-4">
+  <div class="flex gap-12 items-start">
+    <div class="flex flex-col gap-4 w-[40rem]">
+      <div class="flex gap-4 justify-center">
+        <div id="player-ava" class="player-card glass flex flex-col items-center p-4 w-32 active">
+          <img src="https://raw.githubusercontent.com/alohe/memojis/master/png/memo_1.png" alt="Ava" class="w-16 h-16">
+          <div class="font-semibold mt-2">Ava</div>
+          <div class="text-sm opacity-80 points"><span id="points-ava">6</span> pts</div>
+        </div>
+        <div id="player-liam" class="player-card glass flex flex-col items-center p-4 w-32">
+          <img src="https://raw.githubusercontent.com/alohe/memojis/master/png/memo_5.png" alt="Liam" class="w-16 h-16">
+          <div class="font-semibold mt-2">Liam</div>
+          <div class="text-sm opacity-80 points"><span id="points-liam">9</span> pts</div>
+        </div>
+        <div id="player-mia" class="player-card glass flex flex-col items-center p-4 w-32">
+          <img src="https://raw.githubusercontent.com/alohe/memojis/master/png/memo_9.png" alt="Mia" class="w-16 h-16">
+          <div class="font-semibold mt-2">Mia</div>
+          <div class="text-sm opacity-80 points"><span id="points-mia">4</span> pts</div>
+        </div>
+        <div id="player-noah" class="player-card glass flex flex-col items-center p-4 w-32">
+          <img src="https://raw.githubusercontent.com/alohe/memojis/master/png/memo_13.png" alt="Noah" class="w-16 h-16">
+          <div class="font-semibold mt-2">Noah</div>
+          <div class="text-sm opacity-80 points"><span id="points-noah">5</span> pts</div>
+        </div>
+      </div>
+      <div id="choose-action" class="glass flex items-center gap-2 p-3 cursor-pointer ring-2 ring-white">
+        <img src="https://raw.githubusercontent.com/iamcal/emoji-data/master/img-apple-160/1f525.png" alt="Action" class="w-6 h-6">
+        <span>Action</span>
+      </div>
+      <div id="choose-truth" class="glass flex items-center gap-2 p-3 cursor-pointer">
+        <img src="https://raw.githubusercontent.com/iamcal/emoji-data/master/img-apple-160/1f308.png" alt="Truth" class="w-6 h-6">
+        <span>Truth</span>
+      </div>
+      <div class="flex gap-4 pt-2">
+        <button id="accept" class="relative overflow-visible flex-1 rounded-full py-3 text-lg font-semibold shadow text-white bg-gradient-to-b from-[#5CD96E] to-[#34C759]">Accepter</button>
+        <button id="decline" class="relative overflow-visible flex-1 rounded-full py-3 text-lg font-semibold shadow text-white bg-gradient-to-b from-[#FF5F58] to-[#FF3B30]">Refuser</button>
+      </div>
+    </div>
+
+    <div class="relative">
+      <div id="timer" class="absolute -top-16 left-1/2 -translate-x-1/2">
+        <svg class="w-20 h-20" viewBox="0 0 100 100">
+          <circle id="timerCircle" cx="50" cy="50" r="45" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" />
+        </svg>
+        <div id="timerText" class="absolute inset-0 flex items-center justify-center text-2xl font-semibold text-white">30</div>
+      </div>
+      <div class="glass-soft absolute -top-2 -left-2 w-72 h-full -z-10"></div>
+      <div class="card-wrapper w-72 h-48">
+        <div id="card" class="card glass w-full h-full p-6 overflow-hidden cursor-pointer">
+          <div class="card-face front">
+            <svg class="absolute -top-12 -right-12 w-40 h-40" viewBox="0 0 100 100" fill="none">
+              <defs>
+                <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#FFC14C"/>
+                  <stop offset="100%" stop-color="#FF675F"/>
+                </linearGradient>
+              </defs>
+              <path d="M50 0 A50 50 0 0 1 100 50" stroke="url(#arcGrad)" stroke-width="8" fill="none" />
+            </svg>
+            <img id="optionsIcon" src="https://raw.githubusercontent.com/iamcal/emoji-data/master/img-apple-160/2699-fe0f.png" alt="Options" class="w-6 h-6 absolute top-2 right-2 cursor-pointer">
+            <div class="font-semibold mb-3">Truth or Dare</div>
+            <div class="text-lg">Give the player to your right a massage.</div>
+          </div>
+          <div class="card-face back flex items-center justify-center">↩️</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="optionsMenu" class="hidden fixed inset-0 bg-black/40 backdrop-blur-md flex items-center justify-center">
+    <div id="optionsPanel" class="glass p-6 w-72 relative transform scale-0 transition-transform duration-200">
+      <button id="closeOptions" class="absolute top-2 right-3 text-xl">✕</button>
+      <p class="text-center font-semibold mb-4">Options</p>
+      <ul class="flex flex-col gap-3">
+        <li class="flex items-center gap-3"><img src="https://raw.githubusercontent.com/iamcal/emoji-data/master/img-apple-160/1f3b5.png" alt="Musique" class="w-6 h-6"><span>Musique</span></li>
+        <li class="flex items-center gap-3"><img src="https://raw.githubusercontent.com/iamcal/emoji-data/master/img-apple-160/1f50a.png" alt="Son FX" class="w-6 h-6"><span>Son FX</span></li>
+        <li class="flex items-center gap-3"><img src="https://raw.githubusercontent.com/iamcal/emoji-data/master/img-apple-160/1f507.png" alt="Silence" class="w-6 h-6"><span>Silence</span></li>
+        <li class="flex items-center gap-3"><img src="https://raw.githubusercontent.com/iamcal/emoji-data/master/img-apple-160/1f310.png" alt="Langue" class="w-6 h-6"><span>Langue</span></li>
+        <li class="flex items-center gap-3"><img src="https://raw.githubusercontent.com/iamcal/emoji-data/master/img-apple-160/1f6aa.png" alt="Quitter" class="w-6 h-6"><span>Quitter</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const successSound = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg');
+    const failSound = new Audio('https://actions.google.com/sounds/v1/cartoon/concussive_drum_hit.ogg');
+    const beepSound = new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg');
+    const flipActionSound = new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg');
+    const flipTruthSound = new Audio('https://actions.google.com/sounds/v1/cartoon/squeaky_toy.ogg');
+
+    function spawnParticles(btn, color) {
+      const rect = btn.getBoundingClientRect();
+      for (let i = 0; i < 10; i++) {
+        const p = document.createElement('span');
+        p.className = 'particle';
+        p.style.background = color;
+        p.style.left = rect.left + rect.width/2 + 'px';
+        p.style.top = rect.top + rect.height/2 + 'px';
+        p.style.setProperty('--dx', (Math.random()-0.5)*120 + 'px');
+        p.style.setProperty('--dy', (Math.random()-0.5)*120 + 'px');
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 1000);
+      }
+    }
+
+    const players = ['ava', 'liam', 'mia', 'noah'];
+    let active = 0;
+    function toggleActive() {
+      active = (active + 1) % players.length;
+      players.forEach((p, idx) => {
+        document.getElementById(`player-${p}`).classList.toggle('active', idx === active);
+      });
+    }
+
+    document.getElementById('accept').addEventListener('click', (e) => {
+      const btn = e.currentTarget;
+      btn.style.animation = 'btnPulse 0.6s';
+      spawnParticles(btn, '#34C759');
+      successSound.cloneNode().play();
+      const pts = document.getElementById(`points-${players[active]}`);
+      pts.textContent = Number(pts.textContent) + 1;
+      setTimeout(()=> btn.style.animation='',600);
+      toggleActive();
+    });
+
+    document.getElementById('decline').addEventListener('click', (e) => {
+      const btn = e.currentTarget;
+      btn.style.animation = 'btnShake 0.6s';
+      spawnParticles(btn, '#FF3B30');
+      failSound.cloneNode().play();
+      setTimeout(()=> btn.style.animation='',600);
+      toggleActive();
+    });
+
+    let currentType = 'action';
+    const actionBox = document.getElementById('choose-action');
+    const truthBox = document.getElementById('choose-truth');
+    actionBox.addEventListener('click', () => {
+      currentType = 'action';
+      actionBox.classList.add('ring-2','ring-white');
+      truthBox.classList.remove('ring-2','ring-white');
+    });
+    truthBox.addEventListener('click', () => {
+      currentType = 'truth';
+      truthBox.classList.add('ring-2','ring-white');
+      actionBox.classList.remove('ring-2','ring-white');
+    });
+
+    const card = document.getElementById('card');
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+      if (currentType === 'action') {
+        flipActionSound.cloneNode().play();
+      } else {
+        flipTruthSound.cloneNode().play();
+      }
+    });
+
+    const optionsIcon = document.getElementById('optionsIcon');
+    const optionsMenu = document.getElementById('optionsMenu');
+    const optionsPanel = document.getElementById('optionsPanel');
+    const closeOptions = document.getElementById('closeOptions');
+    optionsIcon.addEventListener('click', () => {
+      optionsMenu.classList.remove('hidden');
+      clearInterval(timerInterval);
+      requestAnimationFrame(() => optionsPanel.classList.remove('scale-0'));
+    });
+    closeOptions.addEventListener('click', () => {
+      optionsPanel.classList.add('scale-0');
+      setTimeout(() => {
+        optionsMenu.classList.add('hidden');
+        startTimer();
+      }, 200);
+    });
+
+    const total = 30;
+    let t = total;
+    const circle = document.getElementById('timerCircle');
+    const timerText = document.getElementById('timerText');
+    const circumference = 2 * Math.PI * 45;
+    circle.style.strokeDasharray = `${circumference}`;
+    circle.style.strokeDashoffset = '0';
+
+    let timerInterval;
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (t > 0) {
+          t--;
+          timerText.textContent = t;
+          const offset = circumference - (t / total) * circumference;
+          circle.style.strokeDashoffset = offset;
+          if (t <= 5) {
+            timerText.classList.add('text-red-500');
+            beepSound.cloneNode().play();
+          }
+        } else {
+          clearInterval(timerInterval);
+          failSound.cloneNode().play();
+          timerText.classList.add('animate-pulse');
+        }
+      }, 1000);
+    }
+    startTimer();
+  </script>
+</body>
+</html>
