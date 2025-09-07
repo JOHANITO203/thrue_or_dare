@@ -47,10 +47,10 @@ export default function DiceScene() {
   const [finished, setFinished] = useState(false);
 
   const players = [
-    { name: "Ava", avatar: "assets/memoXX/female_01.png" },
-    { name: "Liam", avatar: "assets/memoXY/male_01.png" },
-    { name: "Mia", avatar: "assets/memoXX/female_02.png" },
-    { name: "Noah", avatar: "assets/memoXY/male_02.png" }
+    { name: "Ava", avatar: "../../assets/memoXX/female_01.png" },
+    { name: "Liam", avatar: "../../assets/memoXY/male_01.png" },
+    { name: "Mia", avatar: "../../assets/memoXX/female_02.png" },
+    { name: "Noah", avatar: "../../assets/memoXY/male_02.png" }
   ];
 
   const handleStop = (score) => {
