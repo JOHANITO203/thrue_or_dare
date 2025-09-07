@@ -1,2 +1,22 @@
+# Dependencies
 node_modules/
-node_modules/
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Lock files
+package-lock.json
+yarn.lock
+
+# Misc
+coverage/
+.DS_Store
