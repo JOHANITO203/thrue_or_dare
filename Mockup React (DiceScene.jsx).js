@@ -33,7 +33,9 @@ function Dice({ position, onStop }) {
       ref={ref}
       castShadow
       onClick={rollDice}
-      className="cursor-pointer"
+      onPointerOver={() => (document.body.style.cursor = "pointer")}
+      onPointerOut={() => (document.body.style.cursor = "auto")}
+      role="button"
     >
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color="white" />
