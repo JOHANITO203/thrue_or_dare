@@ -1,0 +1,16 @@
+{
+  "name": "thrue_or_dare",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Mockup React (DiceScene.jsx).js",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
+}
