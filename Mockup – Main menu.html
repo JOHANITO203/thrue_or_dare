@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Truth or Dare – Menu Principal</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .glass {
+      background: rgba(255,255,255,0.25);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(20px);
+      border-radius: 1rem;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(255,255,255,0.15);
+    }
+    @keyframes btnPulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#7a60ff] via-[#ff6ac0] to-[#ff9575] p-4">
+  <div class="glass w-[520px] overflow-hidden p-8 flex flex-col items-center gap-6 text-center">
+    <h1 class="text-[2.75rem] font-bold flex items-center gap-2">
+      <span>Truth or Dare</span>
+      <span class="flex items-center gap-1">
+        HOT
+        <img src="assets/1f525.png" alt="flamme iOS" class="w-12 h-12 align-text-bottom" />
+      </span>
+    </h1>
+    <div class="relative w-full h-[340px] mt-2">
+      <img src="assets/memo_1.png" alt="memoji jeune fille peau très claire" class="absolute top-1/2 left-1/2 w-[100px] h-[100px]" style="transform: translate(-50%, -50%) rotate(0deg) translate(120px) rotate(0deg);" />
+      <img src="assets/memo_2.png" alt="memoji jeune homme peau très claire" class="absolute top-1/2 left-1/2 w-[100px] h-[100px]" style="transform: translate(-50%, -50%) rotate(45deg) translate(120px) rotate(-45deg);" />
+      <img src="assets/memo_30.png" alt="memoji jeune fille peau claire" class="absolute top-1/2 left-1/2 w-[100px] h-[100px]" style="transform: translate(-50%, -50%) rotate(90deg) translate(120px) rotate(-90deg);" />
+      <img src="assets/memo_4.png" alt="memoji jeune homme peau claire" class="absolute top-1/2 left-1/2 w-[100px] h-[100px]" style="transform: translate(-50%, -50%) rotate(135deg) translate(120px) rotate(-135deg);" />
+      <img src="assets/memo_28.png" alt="memoji jeune fille peau mate" class="absolute top-1/2 left-1/2 w-[100px] h-[100px]" style="transform: translate(-50%, -50%) rotate(180deg) translate(120px) rotate(-180deg);" />
+      <img src="assets/memo_6.png" alt="memoji jeune homme peau mate" class="absolute top-1/2 left-1/2 w-[100px] h-[100px]" style="transform: translate(-50%, -50%) rotate(225deg) translate(120px) rotate(-225deg);" />
+      <img src="assets/memo_7.png" alt="memoji jeune fille peau foncée" class="absolute top-1/2 left-1/2 w-[100px] h-[100px]" style="transform: translate(-50%, -50%) rotate(270deg) translate(120px) rotate(-270deg);" />
+      <img src="assets/memo_26.png" alt="memoji jeune homme peau foncée" class="absolute top-1/2 left-1/2 w-[100px] h-[100px]" style="transform: translate(-50%, -50%) rotate(315deg) translate(120px) rotate(-315deg);" />
+    </div>
+    <div class="w-full flex flex-col gap-4 mt-4">
+      <button class="w-full rounded-full py-3 font-semibold text-white bg-gradient-to-b from-[#5C6BFF] to-[#7A00FF] shadow hover:scale-105 transition-transform">Nouvelle Partie</button>
+      <button class="w-full rounded-full py-3 font-semibold text-white bg-gradient-to-b from-[#5CD96E] to-[#34C759] shadow hover:scale-105 transition-transform">Paramètres</button>
+      <button class="w-full rounded-full py-3 font-semibold text-white bg-gradient-to-b from-[#FF6AC0] to-[#FF3B72] shadow hover:scale-105 transition-transform">Premium Content</button>
+      <button class="w-full rounded-full py-3 font-semibold text-white bg-gradient-to-b from-[#FF9575] to-[#FF3B30] shadow hover:scale-105 transition-transform">Quitter</button>
+    </div>
+  </div>
+</body>
+</html>
