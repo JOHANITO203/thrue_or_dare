@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animations personnalisées pour la Phase 1 */
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); 
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4); 
+    transform: scale(1.05);
+  }
+}
+
+@keyframes spin-dice {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Classes utilitaires */
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-spin-dice {
+  animation: spin-dice 1s ease-out;
+}
+
+/* Override focus pour les inputs dans le glassmorphism */
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
